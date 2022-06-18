@@ -461,6 +461,352 @@ It is completely up to you if you want to use the traditional if...else statemen
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
+**C Switch**
+
+Switch Statement:
+Instead of writing many if..else statements, you can use the switch statement.
+The switch statement selects one of many code blocks to be executed:
+
+Syntax
+switch(expression) {
+  case x:
+    // code block
+    break;
+  case y:
+    // code block
+    break;
+  default:
+    // code block
+}
+
+This is how it works:
+The switch expression is evaluated once
+The value of the expression is compared with the values of each case
+If there is a match, the associated block of code is executed
+The break statement breaks out of the switch block and stops the execution
+The default statement is optional, and specifies some code to run if there is no case match
+
+The break Keyword:
+When C reaches a break keyword, it breaks out of the switch block.
+This will stop the execution of more code and case testing inside the block.
+When a match is found, and the job is done, it's time for a break. There is no need for more testing.
+A break can save a lot of execution time because it "ignores" the execution of all the rest of the code in the switch block.
+
+The default Keyword:
+The default keyword specifies some code to run if there is no case match.
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+**C While Loop**
+
+Loops:
+Loops can execute a block of code as long as a specified condition is reached.
+Loops are handy because they save time, reduce errors, and they make code more readable.
+
+
+While Loop:
+The while loop loops through a block of code as long as a specified condition is true:
+Syntax:
+while (condition) {
+  // code block to be executed
+}
+
+
+The Do/While Loop:
+The do/while loop is a variant of the while loop. This loop will execute the code block once, before checking if the condition is true, then it will repeat the loop as long as the condition is true.
+Do not forget to increase the variable used in the condition, otherwise the loop will never end!.
+Syntax:
+do {
+  // code block to be executed
+}
+while (condition);
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+**C For Loop**
+
+For Loop:
+When you know exactly how many times you want to loop through a block of code, use the for loop instead of a while loop:
+Syntax:
+for (statement 1; statement 2; statement 3) {
+  // code block to be executed
+}
+Statement 1 is executed (one time) before the execution of the code block.
+Statement 2 defines the condition for executing the code block.
+Statement 3 is executed (every time) after the code block has been executed.
+
+The example below will print the numbers 0 to 4:
+
+Example:
+int i;
+
+for (i = 0; i < 5; i++) {
+  printf("%d\n", i);
+}
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+**C Break and Continue**
+
+Break:
+You have already seen the break statement used in an earlier chapter of this tutorial. It was used to "jump out" of a switch statement.
+The break statement can also be used to jump out of a loop.
+
+This example jumps out of the loop when i is equal to 4:
+Example:
+int i;
+
+for (i = 0; i < 10; i++) {
+  if (i == 4) {
+    break;
+  }
+  printf("%d\n", i);
+}
+
+Continue:
+The continue statement breaks one iteration (in the loop), if a specified condition occurs, and continues with the next iteration in the loop.
+
+This example skips the value of 4:
+Example:
+int i;
+for (i = 0; i < 10; i++) {
+  if (i == 4) {
+    continue;
+  }
+  printf("%d\n", i);
+}
+
+Break and Continue in While Loop:
+You can also use break and continue in while loops:
+
+Break Example:
+int i = 0;
+
+while (i < 10) {
+  if (i == 4) {
+    break;
+  }
+  printf("%d\n", i);
+  i++;
+}
+
+Continue Example:
+int i = 0;
+
+while (i < 10) {
+  if (i == 4) {
+    i++;
+    continue;
+  }
+  printf("%d\n", i);
+  i++;
+}
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+**C Arrays**
+
+Arrays:
+Arrays are used to store multiple values in a single variable, instead of declaring separate variables for each value.
+To create an array, define the data type (like int) and specify the name of the array followed by square brackets [].
+To insert values to it, use a comma-separated list, inside curly braces:
+int myNumbers[] = {25, 50, 75, 100};
+We have now created a variable that holds an array of four integers.
+
+Access the Elements of an Array:
+To access an array element, refer to its index number.
+Array indexes start with 0: [0] is the first element. [1] is the second element, etc.
+This statement accesses the value of the first element [0] in myNumbers:
+Example:
+int myNumbers[] = {25, 50, 75, 100};
+printf("%d", myNumbers[0]);
+// Outputs 25
+
+Change an Array Element:
+To change the value of a specific element, refer to the index number:
+Example:
+myNumbers[0] = 33;
+Example
+int myNumbers[] = {25, 50, 75, 100};
+myNumbers[0] = 33;
+printf("%d", myNumbers[0]);
+// Now outputs 33 instead of 25
+
+Loop Through an Array:
+You can loop through the array elements with the for loop.
+The following example outputs all elements in the myNumbers array:
+Example:
+int myNumbers[] = {25, 50, 75, 100};
+int i;
+for (i = 0; i < 4; i++) {
+  printf("%d\n", myNumbers[i]);
+}
+
+Set Array Size:
+Another common way to create arrays, is to specify the size of the array, and add elements later:
+Example:
+// Declare an array of four integers:
+int myNumbers[4];
+// Add elements
+myNumbers[0] = 25;
+myNumbers[1] = 50;
+myNumbers[2] = 75;
+myNumbers[3] = 100;
+Using this method, you should know the size of the array, in order for the program to store enough memory.
+You are not able to change the size of the array after creation.
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+**C Strings**
+
+Strings:
+Strings are used for storing text/characters.
+For example, "Hello World" is a string of characters.
+Unlike many other programming languages, C does not have a String type to easily create string variables. However, you can use the char type and create an array of characters to make a string in C:
+char greetings[] = "Hello World!";
+Note that you have to use double quotes.
+To output the string, you can use the printf() function together with the format specifier %s to tell C that we are now working with strings:
+Example:
+char greetings[] = "Hello World!";
+printf("%s", greetings);
+
+Access Strings:
+Since strings are actually arrays in C, you can access a string by referring to its index number inside square brackets [].
+This example prints the first character (0) in greetings:
+Example:
+char greetings[] = "Hello World!";
+printf("%c", greetings[0]);
+Note that we have to use the %c format specifier to print a single character.
+
+Modify Strings:
+To change the value of a specific character in a string, refer to the index number, and use single quotes:
+Example:
+char greetings[] = "Hello World!";
+greetings[0] = 'J';
+printf("%s", greetings);
+// Outputs Jello World! instead of Hello World!
+
+Another Way Of Creating Strings:
+In the examples above, we used a "string literal" to create a string variable. This is the easiest way to create a string in C.
+You should also note that you can to create a string with a set of characters. This example will produce the same result as the one above:
+Example:
+char greetings[] = {'H', 'e', 'l', 'l', 'o', ' ', 'W', 'o', 'r', 'l', 'd', '!', '\0'};
+printf("%s", greetings);
+Why do we include the \0 character at the end? This is known as the "null termininating character", and must be included when creating strings using this method. It tells C that this is the end of the string.
+
+Differences:
+The difference between the two ways of creating strings, is that the first method is easier to write, and you do not have to include the \0 character, as C will do it for you.
+You should note that the size of both arrays is the same: They both have 13 characters (space also counts as a character by the way), including the \0 character:
+Example:
+char greetings[] = {'H', 'e', 'l', 'l', 'o', ' ', 'W', 'o', 'r', 'l', 'd', '!', '\0'};
+char greetings2[] = "Hello World!";
+printf("%lu\n", sizeof(greetings));   // Outputs 13
+printf("%lu\n", sizeof(greetings2));  // Outputs 13
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+**C User Input**
+
+User Input:
+You have already learned that printf() is used to output values in C.
+To get user input, you can use the scanf() function:
+Example:
+Output a number entered by the user:
+// Create an integer variable that will store the number we get from the user
+int myNum;
+// Ask the user to type a number
+printf("Type a number: \n");
+// Get and save the number the user types
+scanf("%d", &myNum);
+// Output the number the user typed
+printf("Your number is: %d", myNum);
+The scanf() function takes two arguments: the format specifier of the variable (%d in the example above) and the reference operator (&myNum), which stores the memory address of the variable.
+
+User Input Strings:
+You can also get a string entered by the user:
+Example:
+Output the name of a user:
+// Create a string
+char firstName[30];
+// Ask the user to input some text
+printf("Enter your first name: \n");
+// Get and save the text
+scanf("%s", firstName);
+// Output the text
+printf("Hello %s.", firstName);
+Note that you must specify the size of the string/array (we used a very high number, 30, but atleast then we are certain it will store enough characters for the first name), and you don't have to specify the reference operator (&) when working with strings in scanf().
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+**C Memory Address**
+
+Memory Address:
+When a variable is created in C, a memory address is assigned to the variable.
+The memory address is the location of where the variable is stored on the computer.
+When we assign a value to the variable, it is stored in this memory address.
+To access it, use the reference operator (&), and the result will represent where the variable is stored:
+Example:
+int myAge = 43;
+printf("%p", &myAge); // Outputs 0x7ffe5367e044
+Note: The memory address is in hexadecimal form (0x..). You probably won't get the same result in your program.
+You should also note that &myAge is often called a "pointer". A pointer basically stores the memory address of a variable as its value. To print pointer values, we use the %p format specifier.
+
+Why is it useful to know the memory address?
+Pointers are important in C, because they give you the ability to manipulate the data in the computer's memory - this can reduce the code and improve the performance.
+Pointers are one of the things that make C stand out from other programming languages, like Python and Java.
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+**C Pointers**
+
+Creating Pointers:
+You learned from the previous chapter, that we can get the memory address of a variable with the reference operator &:
+Example:
+int myAge = 43; // an int variable
+printf("%d", myAge);  // Outputs the value of myAge (43)
+printf("%p", &myAge); // Outputs the memory address of myAge (0x7ffe5367e044)
+In the example above, &myAge is also known as a pointer.
+A pointer is a variable that stores the memory address of another variable as its value.
+A pointer variable points to a data type (like int) of the same type, and is created with the * operator. The address of the variable you're working with is assigned to the pointer:
+Example:
+int myAge = 43;     // An int variable
+int* ptr = &myAge;  // A pointer variable, with the name ptr, that stores the address of myAge
+// Output the value of myAge (43)
+printf("%d\n", myAge);
+// Output the memory address of myAge (0x7ffe5367e044)
+printf("%p\n", &myAge);
+// Output the memory address of myAge with the pointer (0x7ffe5367e044)
+printf("%p\n", ptr);
+Example explained:
+Create a pointer variable with the name ptr, that points to an int variable (myAge). Note that the type of the pointer has to match the type of the variable you're working with.
+Use the & operator to store the memory address of the myAge variable, and assign it to the pointer.
+Now, ptr holds the value of myAge's memory address.
+
+Dereference:
+In the example above, we used the pointer variable to get the memory address of a variable (used together with the & reference operator).
+However, you can also get the value of the variable the pointer points to, by using the * operator (the dereference operator):
+Example:
+int myAge = 43;     // Variable declaration
+int* ptr = &myAge;  // Pointer declaration
+// Reference: Output the memory address of myAge with the pointer (0x7ffe5367e044)
+printf("%p\n", ptr);
+// Dereference: Output the value of myAge with the pointer (43)
+printf("%d\n", *ptr);
+Note that the * sign can be confusing here, as it does two different things in our code:
+When used in declaration (int* ptr), it creates a pointer variable.
+When not used in declaration, it act as a dereference operator.
+Why Should I Learn About Pointers? Pointers are important in C, because they give you the ability to manipulate the data in the computer's memory - this can reduce the code and improve the performance.
+Pointers are one of the things that make C stand out from other programming languages, like Python and Java.
+Note: Pointers must be handled with care, since it is possible to damage data stored in other memory addresses.
+Good To Know: There are three ways to declare pointer variables, but the first way is mostly used:
+int* myNum; // Most used
+int *myNum;
+int * myNum;
+
+
+
+
+
+
 
 
 
